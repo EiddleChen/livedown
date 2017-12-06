@@ -40,12 +40,14 @@ function encode6bit(b) {
 }
 
 socket.on('content', function(data) {
-  $('pre.lang-puml').each(function(index, block) {
+  $('pre.language-puml').each(function(index, block) {
     var code = block.textContent;
     var s = unescape(encodeURIComponent(code));
     var url = 'http://www.plantuml.com/plantuml/img/' + encode64(deflate(s));
     var img = new Image();
     img.src = url;
-    block.replaceWith(img);
+    var div = document.createElement('div');
+    div.appendChild(img);
+    block.replaceWith(div);
   });
 })
