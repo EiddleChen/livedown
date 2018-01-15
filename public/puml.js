@@ -40,7 +40,7 @@ function encode6bit(b) {
 }
 
 socket.on('content', function(data) {
-  $('pre.language-puml').each(function(index, block) {
+  document.querySelectorAll('pre.language-plantuml').forEach(function(block, index) {
     var code = block.textContent;
     var s = unescape(encodeURIComponent(code));
     var url = 'http://www.plantuml.com/plantuml/img/' + encode64(deflate(s));
