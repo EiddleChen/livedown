@@ -43,7 +43,8 @@ socket.on('content', function(data) {
   document.querySelectorAll('pre.language-plantuml').forEach(function(block, index) {
     var code = block.textContent;
     var s = unescape(encodeURIComponent(code));
-    var url = 'http://www.plantuml.com/plantuml/img/' + encode64(deflate(s));
+    //var url = 'http://www.plantuml.com/img/' + encode64(deflate(s));
+    var url = 'https://puml.yuque.com/g?=' + encodeURIComponent(code);
     var img = new Image();
     img.src = url;
     var div = document.createElement('div');
