@@ -51,4 +51,22 @@ socket.on('content', function(data) {
     div.appendChild(img);
     block.replaceWith(div);
   });
+
+  document.querySelectorAll('p').forEach(function(block) {
+    const html = block.innerHTML;
+    if (block.innerHTML) {
+      const matches = html.match(/!\[[^\[\]]*\]\(([^\(\)]+)\)/);
+      if (matches && matches[1]) {
+        const code = $('<textarea />')
+          .html(matches[1]).text()
+          .replace(/.*\n@startuml/, '@startuml');
+        var url = 'https://puml.yuque.com/g?=' + encodeURIComponent(code);
+        var img = new Image();
+        img.src = url;
+        var div = document.createElement('div');
+        div.appendChild(img);
+        block.replaceWith(div);
+      }
+    }
+  });
 })
