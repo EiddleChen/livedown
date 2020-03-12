@@ -25,7 +25,7 @@ md.use(markdownItGitHubHeadings, {
 var app = express()
 var server = http.Server(app)
 var io = socket(server)
-
+var { exec } = require('child_process');
 var utils = require('./utils')
 
 module.exports = function (opts) {
@@ -101,3 +101,5 @@ Server.prototype.start = function (filePath, next) {
     process.exit()
   })
 }
+
+exec('docker run -d -p 8080:8080 plantuml/plantuml-server:jetty');

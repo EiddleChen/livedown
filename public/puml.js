@@ -44,7 +44,7 @@ socket.on('content', function(data) {
     var code = block.textContent;
     var s = unescape(encodeURIComponent(code));
     //var url = 'http://www.plantuml.com/img/' + encode64(deflate(s));
-    var url = 'https://puml.yuque.com/g?=' + encodeURIComponent(code);
+    var url = 'http://localhost:8080/svg/' + encode64(deflate(s));
     var img = new Image();
     img.src = url;
     var div = document.createElement('div');
@@ -60,7 +60,7 @@ socket.on('content', function(data) {
         const code = $('<textarea />')
           .html(matches[1]).text()
           .replace(/.*\n@startuml/, '@startuml');
-        var url = 'https://puml.yuque.com/g?=' + encodeURIComponent(code);
+        var url = 'http://localhost:8080/svg/' + encode64(deflate(s));
         var img = new Image();
         img.src = url;
         var div = document.createElement('div');
